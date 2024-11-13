@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      .calculator {
+        width: 300px;
+        margin: 0 auto;
+        border: 1px solid black;
+        padding: 20px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" id="result" disabled />
+      <br />
+      <button onclick="display('1')">1</button>
+      <button onclick="display('2')">2</button>
+      <button onclick="display('3')">3</button>
+      <button onclick="display('+')">+</button>
+      <br />
+      <button onclick="display('4')">4</button>
+      <button onclick="display('5')">5</button>
+      <button onclick="display('6')">6</button>
+      <button onclick="display('-')">-</button>
+      <br />
+      <button onclick="display('7')">7</button>
+      <button onclick="display('8')">8</button>
+      <button onclick="display('9')">9</button>
+      <button onclick="display('*')">*</button>
+      <br />
+      <button onclick="display('0')">0</button>
+      <button onclick="clearResult()">C</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="display('/')">/</button>
+    </div>
+
+    <script>
+      function display(value) {
+        document.getElementById("result").value += value;
+      }
+
+      function clearResult() {
+        document.getElementById("result").value = "";
+      }
+
+      function calculate() {
+        const expression = document.getElementById("result").value;
+        const result = eval(expression);
+        document.getElementById("result").value = result;
+      }
+    </script>
+  </body>
+</html>
