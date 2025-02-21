@@ -1,72 +1,111 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Contact Form</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-      }
-
-      h1 {
-        text-align: center;
-      }
-
-      form {
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 10px;
-      }
-
-      input[type="text"],
-      input[type="email"],
-      textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      textarea {
-        height: 150px;
-      }
-
-      button[type="submit"] {
-        background-color: #4caf50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      button[type="submit"]:hover {
-        background-color: #3e8e41;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Contact Us</h1>
-    <form
-      action="mailto:your_email@example.com"
-      method="post"
-      enctype="text/plain"
-    >
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
-
-      <button type="submit">Submit</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+<body>
+    <h1>Contact Form</h1>
+    <form action="Contact.html" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="name">Project:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" cols="0" rows="7" required></textarea><br>
     </form>
-  </body>
-</html>
+    <div>
+        <a href="#" class="button button--flex">
+            Send Message
+        <i class="uil uil-message button__icon"></i>
+        </a>
+    </div>
+    <a href="index.html">Back to Home</a>
+
+    <div class="style">
+        <style>
+            body {
+                background-color: #f3f4f6;
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            h1 {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 2rem;
+                color: #333;
+            }
+            form {
+                width: 50%;
+                margin: 30px 150px;
+                background-color: #fff;
+                padding: 50px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            label {
+                font-size: 1.1rem;
+                color: #333;
+            }
+            input, textarea {
+                width: 90%;
+                padding: 20px;
+                margin: 10px 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                outline: none;
+            }
+            input[type="submit"] {
+                background-color: #333;
+                color: #fff;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover {
+                background-color: #444;
+            }
+            .button {
+                display: inline-block;
+                background-color: #333;
+                color: #fff;
+                padding: 10px 0px;
+                margin-top: 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .button--flex {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .button__icon {
+                margin-left: 10px;
+            }
+            a {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+                text-decoration: none;
+                color: #333;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            .style {
+                display: none;
+            }
+
+
+        </style>
+    </div>
+                
+</body>     
+</head>
+</html>              
+
+             
