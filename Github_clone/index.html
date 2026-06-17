@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub: Where the world builds software · GitHub</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header-dark">
+      <div class="header-container">
+        <a href="/" class="logo">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            />
+          </svg>
+        </a>
+        <nav class="nav-menu">
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle"
+              >Platform <span class="dropdown-arrow">▼</span></a
+            >
+            <div class="dropdown-menu">
+              <a href="#">Developer resources</a>
+              <a href="#">Packages</a>
+              <a href="#">Store</a>
+              <a href="#">Codespaces</a>
+              <a href="#">Actions</a>
+              <a href="#">Security</a>
+            </div>
+          </div>
+          <a href="#">Solution</a>
+          <a href="#">Resources</a>
+          <a href="#">Open source</a>
+          <a href="#">Enterprise</a>
+          <a href="#">Pricing</a>
+        </nav>
+
+        <div class="header-right">
+          <div class="search-container">
+            <input
+              type="text"
+              placeholder="Search GitHub"
+              class="search-input"
+            />
+          </div>
+          <a href="signin.html" class="sign-in">Sign in</a>
+          <a href="signup.html" class="sign-up-btn">Sign up</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+      <div class="hero-content">
+        <h1>Where the world builds software</h1>
+        <p>
+          Millions of developers and companies build, ship, and maintain their
+          software on GitHub—the largest and most advanced development platform
+          in the world.
+        </p>
+        <form class="email-signup" id="mainSignupForm">
+          <input
+            type="email"
+            placeholder="Email address"
+            name="email"
+            required
+          />
+          <button type="submit">Sign up for GitHub</button>
+        </form>
+        <p class="hero-helper" style="display: none"></p>
+        <small
+          >Free for open source. Paid for private repositories.
+          <a href="#">View pricing →</a></small
+        >
+      </div>
+    </main>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <h2>Build software better, together</h2>
+        <p>
+          Powerful collaboration, code review, and code management for open
+          source and private projects.
+        </p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>GitHub Packages</h3>
+            <p>
+              Securely publish and manage your packages with GitHub Packages.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>GitHub Security</h3>
+            <p>Keep your code secure with GitHub Advanced Security.</p>
+          </div>
+          <div class="feature-card">
+            <h3>GitHub Actions</h3>
+            <p>Automate your workflow from idea to production.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Codespaces</h3>
+            <p>Instant dev environments for your team.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="#">Developer resources</a></li>
+              <li><a href="#">Packages</a></li>
+              <li><a href="#">Store</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">GitHub Skills</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Main page email signup (demo): after entering email, go to sign up.
+      const mainSignupForm = document.getElementById("mainSignupForm");
+      if (mainSignupForm) {
+        mainSignupForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const email = new FormData(mainSignupForm).get("email");
+          // Remember email so signup page can prefill/show it.
+          if (email) localStorage.setItem("gh_clone_prefill_email", email);
+          window.location.href = "signup.html";
+        });
+      }
+    </script>
+  </body>
+</html>

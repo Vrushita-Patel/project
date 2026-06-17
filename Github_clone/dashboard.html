@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard · GitHub Clone</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header-dark">
+      <div class="header-container">
+        <a href="index.html" class="logo" aria-label="GitHub Home">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            />
+          </svg>
+        </a>
+
+        <div class="header-right">
+          <a href="index.html" class="sign-in">Home</a>
+          <a href="#" class="sign-up-btn" id="logoutBtn">Log out</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="auth-page">
+      <section class="dashboard-wrap">
+        <div class="dashboard-sidebar">
+          <div class="dash-user">
+            <div class="avatar">@</div>
+            <div class="dash-user-meta">
+              <div class="dash-user-name" id="dashUserName">—</div>
+              <div class="dash-user-email" id="dashUserEmail">—</div>
+            </div>
+          </div>
+
+          <nav class="dash-nav">
+            <a href="#" class="dash-nav-link active" data-page="overview"
+              >Overview</a
+            >
+            <a href="#" class="dash-nav-link" data-page="repos">Repositories</a>
+            <a href="#" class="dash-nav-link" data-page="projects">Projects</a>
+            <a href="#" class="dash-nav-link" data-page="settings">Settings</a>
+          </nav>
+
+          <div class="dash-cta">
+            <a class="auth-primary dash-link" href="index.html">Go to Home</a>
+          </div>
+        </div>
+
+        <div class="dashboard-main">
+          <div class="dash-topbar">
+            <h1 class="dash-title" id="dashTitle">Dashboard</h1>
+            <div class="dash-topbar-actions">
+              <button class="dash-btn" type="button" id="newRepoBtn">
+                New repository
+              </button>
+            </div>
+          </div>
+
+          <div class="dash-grid">
+            <div class="dash-card stat-card">
+              <div class="dash-card-label">Public repos</div>
+              <div class="dash-card-value" id="statRepos">0</div>
+            </div>
+            <div class="dash-card stat-card">
+              <div class="dash-card-label">Private repos</div>
+              <div class="dash-card-value" id="statPrivate">0</div>
+            </div>
+            <div class="dash-card stat-card">
+              <div class="dash-card-label">Followers</div>
+              <div class="dash-card-value" id="statFollowers">0</div>
+            </div>
+            <div class="dash-card stat-card">
+              <div class="dash-card-label">Following</div>
+              <div class="dash-card-value" id="statFollowing">0</div>
+            </div>
+          </div>
+
+          <div class="dash-section" id="page-overview">
+            <h2 class="dash-section-title">Quick actions</h2>
+            <div class="dash-actions-grid">
+              <button class="dash-action" type="button">Upload README</button>
+              <button class="dash-action" type="button">
+                Create issue template
+              </button>
+              <button class="dash-action" type="button">Set up CI</button>
+            </div>
+            <p class="dash-muted" id="dashSubtitle">You are signed in.</p>
+          </div>
+
+          <div class="dash-section" id="page-repos" style="display: none">
+            <h2 class="dash-section-title">Repositories</h2>
+            <div class="repo-list" id="repoList"></div>
+          </div>
+
+          <div class="dash-section" id="page-projects" style="display: none">
+            <h2 class="dash-section-title">Projects</h2>
+            <div class="repo-list" id="projectList"></div>
+            <p class="dash-muted">Demo only: no backend projects yet.</p>
+          </div>
+
+          <div class="dash-section" id="page-settings" style="display: none">
+            <h2 class="dash-section-title">Settings</h2>
+            <div class="settings-card">
+              <div class="settings-row">
+                <div class="settings-label">Account</div>
+                <div class="settings-value" id="settingsAccount">—</div>
+              </div>
+              <div class="settings-row">
+                <div class="settings-label">Email</div>
+                <div class="settings-value" id="settingsEmail">—</div>
+              </div>
+              <div class="settings-row">
+                <div class="settings-label">Stored auth</div>
+                <div class="settings-value">localStorage demo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const user = JSON.parse(localStorage.getItem("gh_clone_user") || "null");
+
+      const dashTitle = document.getElementById("dashTitle");
+      const dashSubtitle = document.getElementById("dashSubtitle");
+      const dashUserName = document.getElementById("dashUserName");
+      const dashUserEmail = document.getElementById("dashUserEmail");
+      const settingsAccount = document.getElementById("settingsAccount");
+      const settingsEmail = document.getElementById("settingsEmail");
+
+      const logoutBtn = document.getElementById("logoutBtn");
+
+      const pageButtons = Array.from(
+        document.querySelectorAll(".dash-nav-link"),
+      );
+      const pages = {
+        overview: document.getElementById("page-overview"),
+        repos: document.getElementById("page-repos"),
+        projects: document.getElementById("page-projects"),
+        settings: document.getElementById("page-settings"),
+      };
+
+      const repoList = document.getElementById("repoList");
+      const projectList = document.getElementById("projectList");
+
+      const stats = {
+        repos: document.getElementById("statRepos"),
+        private: document.getElementById("statPrivate"),
+        followers: document.getElementById("statFollowers"),
+        following: document.getElementById("statFollowing"),
+      };
+
+      if (!user || !user.username) {
+        if (dashTitle) dashTitle.textContent = "Please sign in first";
+        if (dashSubtitle)
+          dashSubtitle.textContent = "Redirecting to Sign in...";
+        setTimeout(() => (window.location.href = "signin.html"), 800);
+      } else {
+        if (dashTitle) dashTitle.textContent = `Hi, ${user.username}`;
+        if (dashSubtitle)
+          dashSubtitle.textContent = `Signed in using email: ${user.email}`;
+        if (dashUserName) dashUserName.textContent = user.username;
+        if (dashUserEmail) dashUserEmail.textContent = user.email;
+        if (settingsAccount) settingsAccount.textContent = user.username;
+        if (settingsEmail) settingsEmail.textContent = user.email;
+
+        // Demo data for a “real GitHub-like” look.
+        const demoRepos = [
+          { name: `${user.username}-frontend`, type: "public" },
+          { name: `${user.username}-api`, type: "public" },
+          { name: `${user.username}-secrets`, type: "private" },
+        ];
+
+        const repoPublic = demoRepos.filter((r) => r.type === "public").length;
+        const repoPrivate = demoRepos.filter(
+          (r) => r.type === "private",
+        ).length;
+
+        if (stats.repos) stats.repos.textContent = String(repoPublic);
+        if (stats.private) stats.private.textContent = String(repoPrivate);
+        if (stats.followers) stats.followers.textContent = "12";
+        if (stats.following) stats.following.textContent = "18";
+
+        if (repoList) {
+          repoList.innerHTML = "";
+          demoRepos.forEach((r) => {
+            const el = document.createElement("div");
+            el.className = "repo-item";
+            el.innerHTML = `
+              <div class="repo-name">
+                <span class="repo-dot ${r.type === "public" ? "public" : "private"}"></span>
+                <span>${r.name}</span>
+              </div>
+              <div class="repo-meta">
+                <span class="repo-pill">${r.type}</span>
+                <a href="#" class="repo-link">View</a>
+              </div>
+            `;
+            repoList.appendChild(el);
+          });
+        }
+
+        if (projectList) {
+          projectList.innerHTML = "";
+          const projects = ["Release roadmap", "Bug triage", "Team milestones"];
+          projects.forEach((p) => {
+            const el = document.createElement("div");
+            el.className = "repo-item project-item";
+            el.innerHTML = `
+              <div class="repo-name">
+                <span class="repo-dot public"></span>
+                <span>${p}</span>
+              </div>
+              <div class="repo-meta">
+                <span class="repo-pill">project</span>
+                <a href="#" class="repo-link">Open</a>
+              </div>
+            `;
+            projectList.appendChild(el);
+          });
+        }
+      }
+
+      pageButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const page = btn.getAttribute("data-page");
+
+          pageButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          Object.keys(pages).forEach((k) => {
+            if (pages[k])
+              pages[k].style.display = k === page ? "block" : "none";
+          });
+        });
+      });
+
+      // “New repository” demo
+      const newRepoBtn = document.getElementById("newRepoBtn");
+      newRepoBtn?.addEventListener("click", () => {
+        alert("Demo: repository creation is not connected to a backend.");
+      });
+
+      logoutBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("gh_clone_user");
+        window.location.href = "signin.html";
+      });
+    </script>
+  </body>
+</html>
