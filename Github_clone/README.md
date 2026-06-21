@@ -1,3 +1,7 @@
+<img width="1918" height="1015" alt="Screenshot 2026-06-17 183345" src="https://github.com/user-attachments/assets/fbaa17b9-9779-42c1-9e38-ea7283aced6f" />
+<img width="1918" height="1018" alt="Screenshot 2026-06-17 183321" src="https://github.com/user-attachments/assets/d95ae33c-8ac5-4889-acd7-cf0c3d7c23a4" />
+<img width="1912" height="1012" alt="Screenshot 2026-06-17 183457" src="https://github.com/user-attachments/assets/cedfc51c-7986-4ae0-9c53-384150d50784" />
+<img width="1918" height="1007" alt="Screenshot 2026-06-17 183408" src="https://github.com/user-attachments/assets/dcb50af8-a9ff-4365-979b-5b37bca9f04e" />
 # GitHub Clone
 
 A simple frontend clone of GitHub built with HTML, CSS, and JavaScript.  
